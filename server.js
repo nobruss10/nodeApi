@@ -10,17 +10,8 @@ mongoose.connect(
 );
 
 requireDir('./src/models');
-const Product = mongoose.model('Product');
 
-app.get('/', (req, res) => {
-    Product.create({
-        title: "Angular",
-        description: "One framework. Mobile e Desktop.",
-        url: "https://angular.io/"
-    });
-
-    return res.send('Hello World');
-})
+app.use('/api', require('./src/routes'));
 
 app.listen(3001);
 
